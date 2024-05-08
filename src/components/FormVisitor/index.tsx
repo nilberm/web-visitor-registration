@@ -1,5 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import style from "./style.module.scss";
+import { api } from "../../services/api";
+import InputMask from "react-input-mask";
+import { CitiessProps, findCity, useFindStates } from "../../hooks/IBGEHooks";
+import { useEffect, useState } from "react";
 interface Inputs {
   name: string;
   cpf: string;
@@ -24,12 +28,35 @@ export default function FormVisitor() {
     reset,
     formState: { errors },
   } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    if (data.name === "test") {
-      reset();
-    }
-    console.log(data);
+
+  const [stateId, setStateId] = useState<string | undefined>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [cities, setCities] = useState<CitiessProps[]>();
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    await api
+      .post("visitor", data)
+      .then((response) => {
+        console.log(response.data);
+        reset();
+      })
+      .catch((err) => {
+        console.log(err.response.data);
+      });
   };
+
+  const { states } = useFindStates();
+
+  const getCities = async (stateId: string) => {
+    const foundCities = await findCity(stateId);
+    setCities(foundCities);
+  };
+
+  useEffect(() => {
+    if (stateId) {
+      getCities(stateId);
+    }
+  }, [stateId]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
@@ -43,7 +70,7 @@ export default function FormVisitor() {
 
       <div className={style.formInput}>
         <label>CPF</label>
-        <input {...register("cpf")} />
+        <InputMask mask={"999.999.999-99"} {...register("cpf")} />
         {errors.cpf && <span>Campo 'CPF' obrigatório</span>}
       </div>
 
@@ -54,32 +81,62 @@ export default function FormVisitor() {
       </div>
 
       <div className={style.columnInput}>
-        <div className={style.formInput}>
+        <div className={style.formInputFirst}>
           <label>Gênero</label>
-          <input {...register("gender")} />
+          <select {...register("gender")}>
+            <option value="male">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="other">Outro</option>
+            <option value="uninformed">Prefiro não informar</option>
+          </select>
           {errors.gender && <span>Campo 'Gênero' obrigatório</span>}
         </div>
         <div className={style.formInput}>
           <label>Idade</label>
-          <input {...register("age")} />
+          <input type="number" {...register("age")} />
           {errors.age && <span>Campo 'Idade' obrigatório</span>}
         </div>
       </div>
 
       <div className={style.columnInput}>
-        <div className={style.formInput}>
-          <label>Cidade</label>
-          <input {...register("city")} />
-          {errors.city && <span>Campo 'Cidade' obrigatório</span>}
+        <div className={style.formInputFirst}>
+          <label>Estado</label>
+          <select
+            {...register("state")}
+            onChange={(v) => setStateId(v.target.value)}
+          >
+            {states &&
+              states.map((state) => {
+                return (
+                  <option key={state.id} value={state.sigla}>
+                    {state.nome}
+                  </option>
+                );
+              })}
+          </select>
+          {errors.state && <span>Campo 'Estado' obrigatório</span>}
         </div>
         <div className={style.formInput}>
-          <label>Estado</label>
-          <input {...register("state")} />
-          {errors.state && <span>Campo 'Estado' obrigatório</span>}
+          <label>Cidade</label>
+          <select
+            {...register("city")}
+            onChange={(v) => console.log(v.target.value)}
+            disabled={!cities}
+          >
+            {cities &&
+              cities?.map((citie: CitiessProps) => {
+                return (
+                  <option key={citie.id} value={citie.id}>
+                    {citie.nome}
+                  </option>
+                );
+              })}
+          </select>
+          {errors.city && <span>Campo 'Cidade' obrigatório</span>}
         </div>
       </div>
 
-      <button type="submit">Enviar</button>
+      <button type="submit" className={style.submitBtn}>Enviar</button>
     </form>
   );
 }
