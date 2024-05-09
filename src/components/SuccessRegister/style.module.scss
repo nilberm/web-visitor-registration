@@ -1,0 +1,15 @@
+.successComponent {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  z-index: 1000;
+  margin: 0 2rem;
+  text-align: center;
+
+  background: rgba(255, 255, 255, 0.90);
+
+}
