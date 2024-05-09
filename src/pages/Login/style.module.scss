@@ -1,0 +1,52 @@
+.mainLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  animation-name: slide;
+  animation-duration: 36s;
+  animation-iteration-count: infinite;
+  background-size: cover;
+
+  .logo {
+    position: fixed;
+    z-index: 1000;
+    top: 10px;
+    left: 25px;
+  }
+}
+
+@keyframes slide {
+  0% {
+    background-image: url(../../assets/images/loginImgs/1.jpg);
+  }
+  11% {
+    background-image: url(../../assets/images/loginImgs/2.jpg);
+  }
+  22% {
+    background-image: url(../../assets/images/loginImgs/3.jpg);
+  }
+  33% {
+    background-image: url(../../assets/images/loginImgs/4.jpg);
+  }
+  44% {
+    background-image: url(../../assets/images/loginImgs/5.jpg);
+  }
+  55% {
+    background-image: url(../../assets/images/loginImgs/6.jpg);
+  }
+  66% {
+    background-image: url(../../assets/images/loginImgs/7.jpg);
+  }
+  77% {
+    background-image: url(../../assets/images/loginImgs/8.jpg);
+  }
+  88% {
+    background-image: url(../../assets/images/loginImgs/9.jpg);
+  }
+  100% {
+    background-image: url(../../assets/images/loginImgs/1.jpg);
+  }
+}
