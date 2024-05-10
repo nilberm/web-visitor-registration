@@ -1,0 +1,39 @@
+.visitorsComponent {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  gap: 1rem;
+
+  .chartHeader {
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      font-weight: 600;
+    }
+
+    .switch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .25rem;
+      font-size: .75rem;
+      font-weight: 600;
+    }
+  }
+
+  .selectMonth {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    align-items: flex-start;
+    justify-content: center;
+
+    span {
+      font-size: .75rem;
+    }
+  }
+}

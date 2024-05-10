@@ -210,7 +210,7 @@ export default function FormVisitor(props: FormVisitorProps) {
               {cities &&
                 cities?.map((citie: CitiessProps) => {
                   return (
-                    <option key={citie.id} value={citie.id}>
+                    <option key={citie.id} value={citie.nome}>
                       {citie.nome}
                     </option>
                   );

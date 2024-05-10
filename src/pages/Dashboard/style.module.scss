@@ -1,0 +1,14 @@
+.mainDashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-image: url(../../assets/images/loginImgs/5.jpg);
+  min-height: 100vh;
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1rem;
+    margin: 2rem;
+  }
+}
