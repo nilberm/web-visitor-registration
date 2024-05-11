@@ -7,6 +7,15 @@
   padding: 1rem;
   gap: 1rem;
 
+  @media (max-width: 470px) {
+    
+    canvas {
+      width: 250px !important;
+      display: flex;
+      margin: 0 auto;
+    }
+  }
+
   .chartHeader {
     display: flex;
     justify-content: space-between;
@@ -19,8 +28,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: .25rem;
-      font-size: .75rem;
+      gap: 0.25rem;
+      font-size: 0.75rem;
       font-weight: 600;
     }
   }
@@ -28,12 +37,14 @@
   .selectMonth {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
+    gap: 0.25rem;
     align-items: flex-start;
     justify-content: center;
 
     span {
-      font-size: .75rem;
+      font-size: 0.75rem;
     }
   }
+
+  
 }

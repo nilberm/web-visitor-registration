@@ -6,6 +6,19 @@
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.95);
 
+  @media (max-width: 470px) {
+    flex-direction: column;
+    canvas {
+      width: 250px !important;
+    }
+
+    .chartInfo {
+      ul {
+        max-height: 2rem;
+      }
+    }
+  }
+
   .chartInfo {
     display: flex;
     flex-direction: column;

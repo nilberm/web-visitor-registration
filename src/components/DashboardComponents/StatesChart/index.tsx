@@ -91,8 +91,6 @@ export default function StatesChart() {
               borderColor: randomColor(),
             });
           }
-
-          
         });
       });
 
@@ -109,7 +107,9 @@ export default function StatesChart() {
 
   return (
     <div className={style.stateComponent}>
-      states
+      <div className={style.headerChart}>
+        <h3>Visitantes por Estados</h3>
+      </div>
       <Line options={options} data={data} />
     </div>
   );
