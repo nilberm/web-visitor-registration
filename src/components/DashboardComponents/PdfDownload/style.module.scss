@@ -1,0 +1,39 @@
+.pdfDownload {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20rem;
+  width: 100%;
+
+  @media (max-width: 1660px) {
+    padding: 0 15rem;
+  }
+
+  @media (max-width: 1440px) {
+    padding: 0 10rem;
+  }
+
+  @media (max-width: 1200px) {
+    padding: 0 10rem;
+  }
+
+  @media (max-width: 1130px) {
+    padding: 0 2rem;
+  }
+
+  @media (max-width: 470px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.25rem;
+  }
+
+  a {
+    background: #172554;
+    border: none;
+    border-radius: 5px;
+    padding: 0.75rem;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+  }
+}

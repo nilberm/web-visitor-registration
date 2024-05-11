@@ -25,7 +25,6 @@ export default function GenderChart() {
   const [data, setData] = useState<DataState>({ labels: [], datasets: [] });
   const [genders, setGenders] = useState([]);
 
-
   const getDataByGender = async () => {
     await api.get(`visitor/by-gender`).then((response) => {
       const responseData = response.data;
@@ -80,12 +79,13 @@ export default function GenderChart() {
               return (
                 <li key={gender.gender}>
                   {gender.gender === "male"
-    ? "Masculino"
-    : gender.gender === "female"
-    ? "Feminino"
-    : gender.gender === "other"
-    ? "Outro"
-    : "Não Informado"}: {gender.count}
+                    ? "Masculino"
+                    : gender.gender === "female"
+                    ? "Feminino"
+                    : gender.gender === "other"
+                    ? "Outro"
+                    : "Não Informado"}
+                  : {gender.count}
                 </li>
               );
             })}

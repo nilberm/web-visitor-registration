@@ -122,10 +122,10 @@ export default function VisitorsChart() {
             defaultValue={monthSelected}
             onChange={(v) => setMonthSelected(v.target.value)}
           >
-            {/* <option value="0">Janeiro/24</option>
-          <option value="1">Fevereiro/24</option>
-          <option value="2">Março/24</option>
-          <option value="3">Abril/24</option> */}
+            <option value="0">Janeiro/24</option>
+            <option value="1">Fevereiro/24</option>
+            <option value="2">Março/24</option>
+            <option value="3">Abril/24</option>
             <option value="4">Maio/24</option>
             <option value="5">Junho/24</option>
             <option value="6">Julho/24</option>

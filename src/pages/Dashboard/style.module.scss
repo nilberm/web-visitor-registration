@@ -5,29 +5,36 @@
   background-image: url(../../assets/images/loginImgs/5.jpg);
   min-height: 100vh;
 
+  .logo {
+    margin-top: 10px;
+    margin-left: 25px;
+  }
+
+
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 1rem;
-    padding: 5rem 20rem;
+    padding: 2rem 20rem;
 
     @media (max-width: 1660px) {
       grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-      padding: 5rem 15rem;
+      padding: 2rem 15rem;
     }
 
     @media (max-width: 1440px) {
       grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-      padding: 5rem 10rem;
+      padding: 2rem 10rem;
     }
 
     @media (max-width: 1200px) {
       grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-      padding: 5rem 10rem;
+      padding: 2rem 10rem;
     }
 
     @media (max-width: 1130px) {
-      padding: 5rem;
+      padding: 2rem;
     }
 
     @media (max-width: 800px) {
