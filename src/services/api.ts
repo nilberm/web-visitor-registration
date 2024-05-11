@@ -4,7 +4,7 @@ const getToken = () => {
 };
 
 export const api = axios.create({
-  baseURL: "https://api-visitor-registration.vercel.app/",
+  baseURL: "https://api-visitor-registration.onrender.com/",
   adapter: axios.defaults.adapter,
 });
 
