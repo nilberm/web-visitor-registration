@@ -2,8 +2,7 @@ import style from "./style.module.scss";
 
 import gifSuccess from "../../assets/gif/success.gif";
 
-interface SuccessRegisterProps {}
-export default function SuccessRegister(props: SuccessRegisterProps) {
+export default function SuccessRegister() {
   return (
     <div className={style.successComponent}>
       <h1>Visita registrada com sucesso!</h1>
