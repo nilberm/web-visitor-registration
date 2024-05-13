@@ -16,6 +16,7 @@ export default function FormLogin() {
     register,
     handleSubmit,
     reset,
+
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -27,7 +28,7 @@ export default function FormLogin() {
     await api
       .post("/auth/signin", data)
       .then((response) => {
-        localStorage.setItem('accessToken', response.data.accessToken);
+        localStorage.setItem("accessToken", response.data.accessToken);
         navigate("/dashboard");
         toast.success("Logado com sucesso!");
         reset();

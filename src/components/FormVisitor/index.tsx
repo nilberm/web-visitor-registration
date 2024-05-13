@@ -4,6 +4,7 @@ import { api } from "../../services/api";
 import InputMask from "react-input-mask";
 import { CitiessProps, findCity, useFindStates } from "../../hooks/IBGEHooks";
 import { useEffect, useState } from "react";
+import { cpf } from "cpf-cnpj-validator";
 interface Inputs {
   name: string;
   cpf: string;
@@ -103,9 +104,18 @@ export default function FormVisitor(props: FormVisitorProps) {
             mask={"999.999.999-99"}
             {...register("cpf", {
               required: true,
+              validate: (value) => {
+                return cpf.isValid(value);
+              },
             })}
           />
-          {errors.cpf && <span>Campo 'CPF' obrigatório</span>}
+          {errors.cpf?.type === "required" ? (
+            <span>Campo 'CPF' obrigatório</span>
+          ) : errors.cpf?.type === "validate" ? (
+            <span>'CPF' invalido!</span>
+          ) : (
+            ""
+          )}
         </div>
 
         <div

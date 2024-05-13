@@ -4,7 +4,7 @@ const getToken = () => {
 };
 
 export const api = axios.create({
-  baseURL: "https://api-visitor-registration.onrender.com/",
+  baseURL: "http://localhost:8080/",
   adapter: axios.defaults.adapter,
 });
 

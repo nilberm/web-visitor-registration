@@ -74,23 +74,38 @@ export default function StatesChart() {
         return monthNames[monthNumber - 1];
       });
 
+      const states = responseData
+        .map((item: responseProps) => {
+          return item.states.map((state) => state.state);
+        })
+        .flat();
+
+      const uniqueStates = states.filter((state: string, index: number) => {
+        return states.indexOf(state) === index;
+      });
+
       const datasets: datasetsProps[] = [];
 
-      responseData.forEach((item: responseProps) => {
-        item.states.forEach((state) => {
-          const index = datasets.findIndex(
-            (data) => data.label === state.state
+      uniqueStates.map((state: string) => {
+        const tempDataArray: number[] = [];
+
+        responseData.map((item: responseProps) => {
+          const foundStateIndex = item.states.findIndex(
+            (item) => item.state === state
           );
 
-          if (index !== -1) {
-            datasets[index].data.push(state.count);
+          if (foundStateIndex !== -1) {
+            tempDataArray.push(item.states[foundStateIndex].count);
           } else {
-            datasets.push({
-              label: state.state,
-              data: [state.count],
-              borderColor: randomColor(),
-            });
+            tempDataArray.push(0);
           }
+        });
+
+        datasets.push({
+          label: state,
+          data: tempDataArray,
+
+          borderColor: randomColor(),
         });
       });
 
